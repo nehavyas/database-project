@@ -16,12 +16,12 @@
 
 <p>
   <b>Price:</b>
-  <%= @product.price %>
+  <%= number_to_currency @product.price %>
 </p>
 
 <p>
   <b>Category:</b>
-  <%= @product.category_id %>
+  <%= @product.category.name %>
 </p>
 
 

@@ -1,0 +1,33 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Product Catalog</h1>
+
+<% @products.each do |product| %>
+  <div class="entry">
+    <table>
+      <td>
+        <%= link_to (image_tag(product.image_url, :size => '150x150',
+                     :border => 1),
+                    product_path(product)) %>
+      </td>
+      <td>
+        <dl>
+          <dt>
+            <h3>
+              <%= product.name + " (Category: " +
+                  product.category.name + ")" %>
+            </h3>
+          </dt>
+          <dd>
+            <%= sanitize(product.description) %>
+            <div class="price_line">
+            <span class="price"><%= number_to_currency(product.price) %></span>
+          </dd>
+        </dl>
+      </td>
+    </div>
+  </table>
+  </div>
+<% end %>
