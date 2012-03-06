@@ -15,7 +15,7 @@ development:
   database: coen280Try2_development
   pool: 5
   username: root
-  password:
+  password: powerfull
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: coen280Try2_test
   pool: 5
   username: root
-  password:
+  password: powerfull
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -38,5 +38,5 @@ production:
   database: coen280Try2_production
   pool: 5
   username: root
-  password:
+  password: powerfull
   socket: /var/run/mysqld/mysqld.sock
