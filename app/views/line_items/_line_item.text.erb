@@ -1,0 +1,4 @@
+<%= sprintf("%2d x %s (Category: %s)",
+            line_item.quantity,
+            truncate(line_item.product.name, :length => 50),
+            truncate(line_item.product.category.name, :length => 50)) %> 

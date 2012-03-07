@@ -1,0 +1,6 @@
+Dear <%= @order.name %>
+Thank you for your order.
+Order summary:
+<%= render @order.line_items %>
+
+We will send you an email when your order ships.

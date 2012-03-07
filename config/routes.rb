@@ -1,4 +1,6 @@
 Coen280Try2::Application.routes.draw do
+  resources :employees
+
   resources :orders
 
   resources :line_items

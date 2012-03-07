@@ -1,0 +1,9 @@
+<h3>Aesthetic order shipped</h3>
+<p>
+  This is to let you know that we have shipped your recent order:
+</p>
+
+<table>
+  <tr><th colspan="2">Quantity</th><th>Description</th></tr>
+  <%= render @order.line_items %>
+</table>
