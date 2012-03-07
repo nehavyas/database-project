@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    @cart = current_cart
     @categories = Category.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @cart = current_cart
     @category = Category.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
+    @cart = current_cart
     @category = Category.new
 
     respond_to do |format|
@@ -34,12 +37,14 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @cart = current_cart
     @category = Category.find(params[:id])
   end
 
   # POST /categories
   # POST /categories.json
   def create
+    @cart = current_cart
     @category = Category.new(params[:category])
 
     respond_to do |format|
@@ -56,6 +61,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.json
   def update
+    @cart = current_cart
     @category = Category.find(params[:id])
 
     respond_to do |format|

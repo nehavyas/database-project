@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @cart = current_cart
     @products = Product.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @cart = current_cart
     @product = Product.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
+    @cart = current_cart
     @product = Product.new
 
     respond_to do |format|
@@ -34,12 +37,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @cart = current_cart
     @product = Product.find(params[:id])
   end
 
   # POST /products
   # POST /products.json
   def create
+    @cart = current_cart
     @product = Product.new(params[:product])
 
     respond_to do |format|
@@ -56,6 +61,7 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
+    @cart = current_cart
     @product = Product.find(params[:id])
 
     respond_to do |format|

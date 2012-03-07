@@ -2,6 +2,7 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
+    @cart = current_cart
     @line_items = LineItem.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
+    @cart = current_cart
     @line_item = LineItem.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   # GET /line_items/new.json
   def new
+    @cart = current_cart
     @line_item = LineItem.new
 
     respond_to do |format|
@@ -34,6 +37,7 @@ class LineItemsController < ApplicationController
 
   # GET /line_items/1/edit
   def edit
+    @cart = current_cart
     @line_item = LineItem.find(params[:id])
   end
 
@@ -59,6 +63,7 @@ class LineItemsController < ApplicationController
   # PUT /line_items/1
   # PUT /line_items/1.json
   def update
+    @cart = current_cart
     @line_item = LineItem.find(params[:id])
 
     respond_to do |format|
