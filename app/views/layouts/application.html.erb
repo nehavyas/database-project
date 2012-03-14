@@ -13,20 +13,33 @@
   <%= @page_title || "Aesthetic Discoveries only for you"%>
   </div>
   <div id="columns">
-   <div id="side">
-     <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
-       <% render @cart %>
-     <% end %>
-   <%= link_to 'Home', store_url %></br>
-   <a href="http://www..../faq">Questions</a><br/>
-   <a href="http://www..../aboutus">About Us</a><br/>
-   <a href="http://www..../contact">Contact</a><br/>
-   </div>
-   <div id="main">
+    <div id="side">
+      <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
+        <% render @cart %>
+      <% end %>
+      <%= link_to 'Home', store_url %></br>
+      <a href="http://www..../faq">Questions</a><br/>
+      <a href="http://www..../aboutus">About Us</a><br/>
+      <a href="http://www..../contact">Contact</a><br/>
 
-   <%= yield %>
-   </div>
+      <% if is_employee %>
+        <br />
+        <%= link_to 'Orders', orders_path %><br />
+        <%= link_to 'Categories', categories_path %><br />
+        <%= link_to 'Products', products_path %><br />
+	<%= link_to 'Employees', employees_path %><br />
+	<%= button_to 'Logout', logout_path, :method => :delete %>
+      <% end %>
+    <% if is_employee %>
+      <h3> I am employee </h3>
+    <% end %>
+    </div>
+    <div id="main">
+
+    <%= yield %>
+    </div>
   </div>
-
+  <%= debug(params) if Rails.env.development? %>
+  <%= debug(session) if Rails.env.development? %>
 </body>
 </html>

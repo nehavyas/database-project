@@ -2,7 +2,13 @@ require 'digest/sha2'
 
 class Employee < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
+  after_destroy :ensure_an_admin_remains
 
+  def ensure_an_admin_remains
+    if Employee.count.zero?
+      raise "Can't delete last user"
+    end
+  end
 
   validates :password, :confirmation => true
   attr_accessor :password_confirmation

@@ -79,7 +79,12 @@ class EmployeesController < ApplicationController
   # DELETE /employees/1.json
   def destroy
     @employee = Employee.find(params[:id])
-    @employee.destroy
+    begin
+      @employee.destroy
+      flash[:notice] = "Employee #{@employee.name} deleted"
+    rescue Exception => e
+      flash[:notice] = e.message
+    end
 
     respond_to do |format|
       format.html { redirect_to employees_url }
