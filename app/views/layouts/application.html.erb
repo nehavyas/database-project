@@ -30,9 +30,21 @@
 	<%= link_to 'Employees', employees_path %><br />
 	<%= button_to 'Logout', logout_path, :method => :delete %>
       <% end %>
-    <% if is_employee %>
-      <h3> I am employee </h3>
-    <% end %>
+      <br />
+      <%= form_tag products_path, :method => 'get', :id => "products_search" do %>
+        <b>Search Product</b><br />
+        <%= select_tag :category_id,
+                     options_from_collection_for_select(Category.all,
+                                                        "id", "name"),
+                     :include_blank => true, :prompt => 'Select Category' %><br />
+        <i>Name</i>
+        <%= text_field_tag(:name, params[:name], :size => 15) %><br />
+        <i>Minimum Price</i>
+        <%= text_field_tag(:min_price, params[:min_price], :size => 6) %><br />
+        <i>Maximum Price</i>
+        <%= text_field_tag(:max_price, params[:max_price], :size => 6) %><br />
+        <%= submit_tag "Search", :name => nil %>
+      <% end %>
     </div>
     <div id="main">
 

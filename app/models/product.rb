@@ -7,6 +7,22 @@ class Product < ActiveRecord::Base
   before_save :ensure_valid_values
   before_destroy :ensure_not_referenced_by_any_line_item
 
+  def self.search_by_category(category_id)
+    where("category_id = ?", category_id)
+  end
+
+  def self.search_by_name(name)
+    where("name LIKE ?", name)
+  end
+
+  def self.search_where_price_gte(min)
+    where("price >= ?", min.gsub(',','_').to_f)
+  end
+
+  def self.search_where_price_lte(max)
+    where("price <= ?", max.gsub(',','_').to_f)
+  end
+
   private
     def ensure_valid_values
       if name.empty?

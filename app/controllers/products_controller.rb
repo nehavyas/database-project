@@ -4,7 +4,25 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @cart = current_cart
-    @products = Product.paginate :page =>params[:page],
+    @products = Product.scoped
+
+    if not params[:category_id].blank?
+      @products = @products.search_by_category(params[:category_id])
+    end
+
+    if not params[:name].blank?
+      @products = @products.search_by_name(params[:name])
+    end
+
+    if not params[:min_price].blank?
+      @products = @products.search_where_price_gte(params[:min_price])
+    end
+
+    if not params[:max_price].blank?
+      @products = @products.search_where_price_lte(params[:max_price])
+    end
+
+    @products = @products.paginate :page =>params[:page],
                                  :per_page => 10
 
     respond_to do |format|
