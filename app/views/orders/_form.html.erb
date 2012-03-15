@@ -28,7 +28,11 @@
     <%= f.select :pay_type, Order::PAYMENT_TYPES,
                  :prompt => 'Select payment method' %>
   </div>
+  <div class="field">
+    <%= f.label :shipped %>
+    <%= f.check_box(:shipped) %>
+  </div>
   <div class="actions">
-    <%= f.submit 'Place Order' %>
+    <%= f.submit %>
   </div>
 <% end %>
